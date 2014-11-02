@@ -1,0 +1,64 @@
+	DEFINE WINDOW wlich1 ;
+		FROM INT((SROW()-20)/2),INT((SCOL()-75)/2) ;
+		TO INT((SROW()-20)/2)+19,INT((SCOL()-75)/2)+74 ;
+		TITLE " Встановлення нового лўчильника " ;
+		FLOAT ;
+		NOCLOSE ;
+		SHADOW ;
+		DOUBLE ;
+		COLOR SCHEME 5
+ACTIVATE WINDOW wlich1
+
+@ 1,20 GET m.date_vst ;
+	SIZE 1,10 ;
+	DEFAULT {  /  /  }
+@ 3,9 GET mv ;
+	PICTURE "@^ *************************" ;
+	SIZE 3,29 ;
+	DEFAULT "*************************" ;
+	COLOR SCHEME 5, 6
+@ 4,51 GET m.bud ;
+	SIZE 1,4 ;
+	DEFAULT " " ;
+	PICTURE "9999"
+@ 7,20 GET m.lich ;
+	SIZE 1,1 ;
+	DEFAULT " " ;
+	PICTURE "9"
+@ 9,20 GET m.n_lich ;
+	SIZE 1,11 ;
+	DEFAULT " " ;
+	PICTURE "99999999999"
+@ 11,20 GET m.pokn ;
+	SIZE 1,9 ;
+	DEFAULT 0 ;
+	PICTURE "999999.99"
+@ 13,20 GET m.poks ;
+	SIZE 1,9 ;
+	DEFAULT 0 ;
+	PICTURE "999999.99"
+@ 6,43 GET mnor ;
+	PICTURE "@^ ********************" ;
+	SIZE 3,24 ;
+	DEFAULT "********************" ;
+	COLOR SCHEME 5, 6
+@ 9,43 GET m.hvoda ;
+	PICTURE "@^ Холодна;Гаряча" ;
+	SIZE 3,11 ;
+	DEFAULT "Холодна" ;
+	COLOR SCHEME 5, 6
+@ 16,28 SAY "[ Записати ]"
+@ 1,2 SAY "Дата встановлення"
+@ 4,2 SAY "Вулиця"
+@ 7,2 SAY "Лўчильник........."
+@ 4,43 SAY "Будинок"
+@ 9,2 SAY "Hомер............."
+@ 11,2 SAY "Початковий показ.."
+@ 13,2 SAY "Середнўй показ"
+@ 13,16 SAY "...."
+@ 7,37 SAY "Цўна"
+@ 10,37 SAY "Марка"
+
+READ CYCLE NOMOUSE MODAL
+RELEASE WINDOW wlich1
+

@@ -1,0 +1,64 @@
+	DEFINE WINDOW wnarax ;
+		FROM INT((SROW()-19)/2),INT((SCOL()-77)/2) ;
+		TO INT((SROW()-19)/2)+18,INT((SCOL()-77)/2)+76 ;
+		TITLE " Ввўд,корегування нарахувань " ;
+		NOFLOAT ;
+		NOCLOSE ;
+		SHADOW ;
+		COLOR SCHEME 8
+
+
+*       ╓─────────────────────────────────────────────────────────╖
+*       ║                                                         ║
+*       ║                  NARAXV Screen Layout                   ║
+*       ║                                                         ║
+*       ╙─────────────────────────────────────────────────────────╜
+*
+
+ACTIVATE WINDOW wnarax
+@ 6,31 SAY "Hорма витрат води"
+@ 2,21 GET m.kodbk ;
+	SIZE 1,7 ;
+	DEFAULT " " ;
+	PICTURE "9999999"
+@ 5,21 GET m.kprop ;
+	SIZE 1,2 ;
+	DEFAULT " " ;
+	PICTURE "99"
+@ 4,21 SAY "Hема"
+@ 6,21 GET m.saldn ;
+	SIZE 1,9 ;
+	DEFAULT {  /  /  } ;
+	PICTURE "999999.99"
+@ 2,2 SAY "Особовий рахунок..."
+@ 5,2 SAY "К-сть прописаних..."
+@ 4,2 SAY "Каналўзацўя........"
+@ 6,2 SAY "Початкове сальдо..."
+@ 5,49 GET mnor ;
+	PICTURE "@^ ...................." ;
+	SIZE 3,24 ;
+	DEFAULT "...................." ;
+	COLOR SCHEME 8, 2
+@ 1,31 TO 4,72 ;
+	COLOR B/BG    
+@ 1,33 SAY "Прўзвище,адреса" ;
+	COLOR B/BG    
+@ 15,29 SAY "[ Записати ]"
+@ 8,2 TO 13,72 ;
+	COLOR B/BG    
+
+IF NOT WVISIBLE("wnarax")
+	ACTIVATE WINDOW wnarax
+ENDIF
+
+READ CYCLE
+
+RELEASE WINDOW wnarax
+
+#REGION 0
+IF m.talkstat = "ON"
+	SET TALK ON
+ENDIF
+IF m.compstat = "ON"
+	SET COMPATIBLE ON
+ENDIF

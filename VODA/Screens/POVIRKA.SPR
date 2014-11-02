@@ -1,0 +1,33 @@
+	DEFINE WINDOW wpov ;
+		FROM INT((SROW()-13)/2),INT((SCOL()-50)/2) ;
+		TO INT((SROW()-13)/2)+12,INT((SCOL()-50)/2)+49 ;
+		TITLE " Зняття на повўрку " ;
+		FLOAT ;
+		NOCLOSE ;
+		SHADOW ;
+		DOUBLE ;
+		COLOR SCHEME 5
+
+ACTIVATE WINDOW wpov
+@ 1,2 SAY "Лўчильник"
+@ 4,2 SAY "Hомер"
+@ 4,28 SAY "Марка"
+@ 1,22 SAY "Дата зняття"
+@ 6,27 SAY "Об'їм води" COLOR W/RB    
+@ 6,2 SAY "Поч.Показ" 	COLOR W/RB    
+@ 6,15 SAY "Кўн.показ"	COLOR W/RB    
+@ 3,0 TO 3,47 			COLOR W/RB    
+@ 5,0 TO 5,47 			COLOR W/RB    
+@ 9,20 SAY "[ OK ]"
+
+@ 1,12 GET m.lich 
+@ 4,8 GET m.nomer 
+@ 4,34 GET m.marka
+@ 1,35 GET m.date1
+@ 7,2 GET m.pokn SIZE 1,9 
+@ 7,15 GET m.pokp SIZE 1,9 
+@ 7,27 GET m.ov SIZE 1,9 
+
+READ CYCLE MODAL NOMOUSE
+RELEASE WINDOW wpov
+
