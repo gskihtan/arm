@@ -15,6 +15,8 @@ select;
 	zpilga.kpil,;
 	zpilga.n_posv,;
 	zpilga.ind_pod,;
+    out.ov,;
+    out.ost,;
 	out.sv,;
 	out.sv_4,;
 	out.st_4,;
