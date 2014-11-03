@@ -1,17 +1,14 @@
 close all
 SELE 1
-create table D:\ARM\VODA\dop.dbf (CDPR N(12),IDCODE C(10),FIO C(50),RS C(15),YEARIN N(4),MONTHIN N(2),LGCODE N(4),flag N(1),pros C(15),fiopil C(25),tarif N(7,4),ind_pod C(10),n_posv C(10),data1 D(8),data2 D(8),LGKOL N(2),LGPRC N(3),SUMM N(5,2),FACT N(12,6),kodbk C(7),pil N(3),cntpil N(5),sv_4 N(19,4),st_4 N(19,4),sv N(10,2),st N(10,2),LGKAT C(3),kodpil C(2),kodpil_s C(3),kanal N(1))
+create table D:\ARM\VODA\dop.dbf (CDPR N(12),IDCODE C(10),FIO C(50),RS C(15),YEARIN N(4),MONTHIN N(2),LGCODE N(4),flag N(1),pros C(15),fiopil C(25),tarif N(7,4),ind_pod C(10),n_posv C(10),data1 D(8),data2 D(8),LGKOL N(2),LGPRC N(3),SUMM N(5,2),FACT N(12,6),kodbk C(7),pil N(3),cntpil N(5),sv_4 N(19,4),st_4 N(19,4),sv N(10,2),st N(10,2),LGKAT C(3),kodpil C(2),kodpil_s C(3),kanal N(1),ov N(6,2),ost N(6,2) )
 APPEND FROM t_result.DBF
-browse
-*set filter to kodpil ='90' or kodpil ='91' or kodpil ='60' or kodpil ='65' or kodpil ='67' or kodpil ='40' 
-*delete all for kodpil ='90' or kodpil ='91' or kodpil ='60' or kodpil ='65' or kodpil ='67' or kodpil ='40'
-*pack
 browse
 CLOS ALL
 
 sele 2
 
 USE D:\ARM\VODA\DOP.DBF
+repl all fact with (ov*7.90+ost*1.22-sv-st)
 repl all cdpr with 03348531
 repl all lgcode with 502
 repl all lgprc with pil
@@ -23,8 +20,7 @@ repl all lgkol with cntpil
 *repl all summ with (sv_4+st_4)*lgkol
 repl all summ with (sv_4+st_4)*cntpil
 repl all rs with kodbk
-*repl all fact with (sv+st)*100/lgprc 
-repl all fact with (sv+st)*100/pil
+*repl all fact with (sv+st)*100/pil
 repl all IDCODE with IND_POD
 repl all PROS with n_posv
 repl all FIO with FIOPIL
@@ -80,43 +76,9 @@ CLOS ALL
 
 use dop
 copy to PIL_MOY
-*browse
 
 CLOS ALL
-*use z_p
-*set filter to kodpil ='90' or kodpil ='91' or kodpil ='60' or kodpil ='65' or kodpil ='67' or kodpil ='40' 
-*delete all for kodpil ='90' or kodpil ='91' or kodpil ='60' or kodpil ='65' or kodpil ='67' or kodpil ='40'
-*pack
-*browse
-*CLOS ALL
-
-*use z_p
-*index on kodpil to r10
-
-*sele 1
-*USE D:\ARM\VODA\PIL_MOY.DBF
-*browse
-*sele 2
-*use D:\ARM\VODA\z_p
-*index on KODBK to ir comp
-*sele 1
-*set relat to KODBK into z_p
-**set relat to ind_pod into z_p
-*repl all idcode with z_p.Ind_pod  
-*repl all PROS with z_p.n_posv
-*repl all lgkat with z_p.kodpil_s 
-*repl all fio with z_p.fiopil 
-
-
-
-*browse
-*clos all
 use PIL_MOY
 copy fields cdpr,idcode,fio,PROS,rs,yearin,monthin,lgcode,DATA1,DATA2,lgkol,LGKAT,lgprc,summ,fact,tarif,flag to woda_pil1
 clos all
 
-*sele 1
-*create table D1:\ARM\VODA\1.dbf (kanal N(1),kodn C(2),kodnor C(2))
-
-*APPEND FROM woda_pil1.DBF
-*browse
