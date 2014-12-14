@@ -44,8 +44,8 @@ m_period = CTOD([01.]+c_month+[.]+c_year)
 *
 m_text = []
 *
-SET DEFAULT TO d:\arm\voda\report8
-SET PATH TO d:\arm\voda\report8
+SET DEFAULT TO d:\dos\d\arm\voda\report8
+SET PATH TO d:\dos\d\arm\voda\report8
 *
 USE ..\dovvul IN 0 ALIAS dovvul NOUPDATE ORDER vul
 USE ..\dovad IN 0 ALIAS dovad  NOUPDATE ORDER kodbk

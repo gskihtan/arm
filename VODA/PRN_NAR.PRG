@@ -242,7 +242,7 @@ endif
 close data
 use out
 index on kodbk to i comp
-
+*index on (vul+bud) to r1
 select 0
 use lich order kodbk
 set relat to kodbk into out

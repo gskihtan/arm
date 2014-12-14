@@ -18,7 +18,7 @@ sele 1
 set relat to kodbk into dovad
 repl all derg with dovad.derg
 repl all kvar with dovad.kvar
-browse
+*browse
 
 clos all
 
@@ -38,11 +38,11 @@ repl all ost with narax.ost
 repl all ovd with narax.ovd
 repl all ostd with narax.ostd
 copy to g_nkp4
-browse
+*browse
 clos all
 
 sele 3
-*****загальна к-ть пр/сектор буд-в з каналўзацўїю*
+*****загальна к-ть пр/сектор буд-в з каналўзацўїю g_nkp42 *
 use g_nkp4
 set filter to kanal = 1
 copy to g_nkp41
@@ -113,10 +113,13 @@ sele 9
 use g1_nkp4
 *set filter to kvar ='   ' 
 set filter to kvar = '1  ' or kvar = '   '
-copy to g2_nkp4
+copy to  g2_nkp4
+clos all
+use g2_nkp4
 browse
 list
 clos all
+
 sele 10
 *****кўлькўсть прив.буд.з лўч. в g3_nkp4, реалўзацўя*
 use g2_nkp4
@@ -125,7 +128,7 @@ copy to g2_nkp444
 clos all
 use g2_nkp444
 set filter to kodn ='08' or kodn ='11'
-browse
+*browse
 sum (ov+ovd) to s3
 ? s3
 sum (ost+ostd) to s4
@@ -133,7 +136,9 @@ sum (ost+ostd) to s4
 sum kprop to s6
 ? s6
 copy to g3_nkp4
-*browse
+clos all
+use g3_nkp4
+browse
 list
 clos all
 
@@ -148,7 +153,7 @@ clos all
 sele 12
 *****загальна кўлькўсть будинкўв в g4_nkp4*
 use g_nkp4
-browse
+*browse
 set filter to kvar = '1  ' or kvar = '   '
 copy to g4_nkp4
 use
