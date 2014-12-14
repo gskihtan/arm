@@ -185,7 +185,8 @@ enddo
 proc p_scr
 *******************
 set color to
-@ 0,0,24,79 box replicate([░],9)
+clear
+*@ 0,0,24,79 box replicate([░],9)
 @ 17,25,20,55 box [╔═╗║╝═╚║ ]
 @ 18,27 say [      АРМ Водоканал]
 @ 19,27 say [    H а с е л е н н я]
