@@ -123,6 +123,9 @@ select 0
 use &path\dovnor order tm
 
 select 0
+use &path\dovnor again alias dovnor_kodnor order tm
+
+select 0
 use &path\dovpil order tm
 
 select 0
@@ -159,7 +162,10 @@ index on mis to lichb comp
 set filter to mis==narax.mis
 
 select narax
-set relat to kodn+mis into dovnor,mis+[1] into lich
+set relat to;
+	kodn+mis into dovnor,;
+	kodnor+mis into dovnor_kodnor,;
+	mis+[1] into lich
 
 if recc()>0
 	do a_scr
@@ -168,6 +174,7 @@ else
 endif
 		
 use in dovnor
+use in dovnor_kodnor
 use in dovpil
 use in zpilga
 use in lich
@@ -488,6 +495,7 @@ mcolor1=[w/n]
 @ 6,10 SAY narax.oplomb color gb+/b
 
 @ 7,1 SAY dovnor.naznor SIZE 1,22 color gb+/b
+@ 7,45 SAY dovnor_kodnor.naznor SIZE 1,22 color gb+/b
 select lich
 copy to $temp for mis==narax.mis
 select outlich
