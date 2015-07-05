@@ -40,7 +40,7 @@ proc p_process
 ********************
 select 0
 use (mfname) alias postp
-set relat to or_w into dovad,or_w into narax
+set relat to alltrim(RASH) into dovad, alltrim(RASH) into narax
 
 flag_zap=.f.
 
@@ -51,10 +51,10 @@ on key
 on key label F1 do p_posh
 on key label F2 do p_save
 browse window w field;
-        or_w    :h=[Ос.рах],;
-        sub_w   :h=[Субсидўя],;
-        adr	    = f_adrf() :h=[Прўзвище,адреса],;
-        adr,pr_wl,im_wl,bt_wl;
+        RASH    :h=[Ос.рах],;
+        Summa     :h=[Субсидўя],;
+        FIO	    = f_adrf() :h=[Прўзвище,адреса],;
+        fio,name_v,Bld,Flat;
         title mfname
 pop key
 use
@@ -71,7 +71,7 @@ push key
 on key
 do ..\poshuk
 if m_result
-	wait [ Особовий рахунок - ] + m_kodbk wind time 7 nowait 
+	wait [ Особовий рахунок - ] + m_kodbk wind time 14 nowait 
 endif
 pop key
 
@@ -93,12 +93,12 @@ scan for not deleted()
 endscan	
 
 count to m.cnt for not deleted()
-sum sub_w to m.sum for not deleted()
+sum sb4 to m.sum for not deleted()
 goto mrec
 wait clear
 
 mmess=[     Кўлькўсть - ]+allt(str(m.cnt))+;
-      [     Сума - ]+allt(str(m.sum,9,2))+[     ##]+;
+      [     Сума - ]+allt(str(m.sum,13,2))+[     ##]+;
       [Записати пачку ?]
 	
 if p_confirm(mmess,.t.)
@@ -120,8 +120,8 @@ if p_confirm(mmess,.t.)
         select postp
         scan for not deleted()
                insert into subsn (npach,kodbk,suma,date);
-               		values (allt(m.npach),postp.or_w,;
-               		postp.sub_w,m.date)
+               		values (allt(m.npach),postp.RASH,;
+               		postp.Summa,m.date)
                delete
         endscan
 	    pack
