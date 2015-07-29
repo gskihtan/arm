@@ -93,7 +93,7 @@ scan for not deleted()
 endscan	
 
 count to m.cnt for not deleted()
-sum sb4 to m.sum for not deleted()
+sum summa to m.sum for not deleted()
 goto mrec
 wait clear
 
